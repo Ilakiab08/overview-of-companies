@@ -13,3 +13,5 @@ function List({ companies }) {
     </ul>
   );
 }
+
+export default List;
