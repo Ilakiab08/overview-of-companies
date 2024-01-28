@@ -6,9 +6,14 @@ function CompanySearchForm() {
  const [selectedYear, setSelectedYear] = useState(null);
 
  const handleSubmit = (event) => {
-   event.preventDefault();
-   // Fetch companies here
+  event.preventDefault();
+  if (selectedMunicipality && selectedYear) {
+     fetchCompanies(selectedMunicipality, selectedYear).then(setCompanies);
+  } else {
+     alert("Please select a municipality and enter a year.");
+  }
  };
+ 
 
  return (
     <form onSubmit={handleSubmit}>
