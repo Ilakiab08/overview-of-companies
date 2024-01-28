@@ -7,7 +7,7 @@ function List({ companies }) {
     <ul>
       {companies.map(company => (
         <li key={company.organizationNumber}>
-          {company.name}, founded on {company.foundationDate}
+          {company.name}, founded on {new Date(company.foundationDate).toLocaleDateString()}
         </li>
       ))}
     </ul>
