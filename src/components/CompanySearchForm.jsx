@@ -1,30 +1,32 @@
-import { useState } from 'react';
 
-function CompanySearchForm() {
- const municipalities = ['Oslo', 'Bergen', 'Trondheim'];
- const [selectedMunicipality, setSelectedMunicipality] = useState(null);
- const [selectedYear, setSelectedYear] = useState(null);
+import React, { useState } from 'react';
 
- const handleSubmit = (event) => {
-  event.preventDefault();
-  if (selectedMunicipality && selectedYear) {
-     fetchCompanies(selectedMunicipality, selectedYear).then(setCompanies);
-  } else {
-     alert("Please select a municipality and enter a year.");
-  }
- };
- 
+function CompanySearchForm({ onSearch }) {
+  const municipalities = ['Oslo', 'Bergen', 'Trondheim'];
+  const [selectedMunicipality, setSelectedMunicipality] = useState('');
+  const [selectedYear, setSelectedYear] = useState('');
 
- return (
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (selectedMunicipality && selectedYear) {
+      onSearch(selectedMunicipality, selectedYear);
+    } else {
+      alert("Please select a municipality and enter a year.");
+    }
+  };
+
+  return (
     <form onSubmit={handleSubmit}>
-      <select onChange={(e) => setSelectedMunicipality(e.target.value)}>
+      <select value={selectedMunicipality} onChange={(e) => setSelectedMunicipality(e.target.value)}>
+        <option value="" disabled>Select a municipality</option>
         {municipalities.map((municipality, index) => (
-          <option key={index} value={index}>{municipality}</option>
+          <option key={index} value={municipality}>{municipality}</option>
         ))}
       </select>
-      <input type="number" placeholder="Year" onChange={(e) => setSelectedYear(e.target.value)} />
+      <input type="number" placeholder="Year" value={selectedYear} onChange={(e) => setSelectedYear(e.target.value)} />
       <button type="submit">Find companies</button>
     </form>
- );
+  );
 }
-export  default  CompanySearchForm;
+
+export default CompanySearchForm;
