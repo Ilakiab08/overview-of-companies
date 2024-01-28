@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 function CompanySearchForm() {
- const municipalities = ['Oslo', 'Bergen', 'Trondheim']; // replace with actual municipalities
+ const municipalities = ['Oslo', 'Bergen', 'Trondheim'];
  const [selectedMunicipality, setSelectedMunicipality] = useState(null);
  const [selectedYear, setSelectedYear] = useState(null);
 
@@ -22,4 +22,4 @@ function CompanySearchForm() {
     </form>
  );
 }
-export  default  CompanySearchForm
+export  default  CompanySearchForm;
