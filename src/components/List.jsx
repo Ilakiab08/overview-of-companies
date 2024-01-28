@@ -1,7 +1,8 @@
-
-import React from "react";
+import React from 'react';
 
 function List({ companies }) {
+  console.log('Companies in List component:', companies);
+
   return (
     <ul>
       {companies.map(company => (
@@ -12,5 +13,3 @@ function List({ companies }) {
     </ul>
   );
 }
-
-export default List;
