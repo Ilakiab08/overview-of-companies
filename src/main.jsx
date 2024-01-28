@@ -6,7 +6,7 @@ import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    {/* Wrap the App component with the ErrorBoundary */}
+   
     <ErrorBoundary>
       <App />
     </ErrorBoundary>
