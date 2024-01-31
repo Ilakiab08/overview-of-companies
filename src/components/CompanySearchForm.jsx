@@ -1,32 +1,36 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 
-function CompanySearchForm({ onSearch }) {
-  const municipalities = ['Oslo', 'Bergen', 'Trondheim'];
-  const [selectedMunicipality, setSelectedMunicipality] = useState('');
-  const [selectedYear, setSelectedYear] = useState('');
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (selectedMunicipality && selectedYear) {
-      onSearch(selectedMunicipality, selectedYear);
-    } else {
-      alert("Please select a municipality and enter a year.");
-    }
-  };
-
+const CompanySearchForm = ({ municipalities, selectedMunicipality, selectedYear, onMunicipalityChange, onYearChange, onSearch }) => {
   return (
-    <form onSubmit={handleSubmit}>
-      <select value={selectedMunicipality} onChange={(e) => setSelectedMunicipality(e.target.value)}>
-        <option value="" disabled>Select a municipality</option>
-        {municipalities.map((municipality, index) => (
-          <option key={index} value={municipality}>{municipality}</option>
-        ))}
-      </select>
-      <input type="number" placeholder="Year" value={selectedYear} onChange={(e) => setSelectedYear(e.target.value)} />
-      <button type="submit">Find companies</button>
-    </form>
+    <div>
+      <label>
+        Select Municipality:
+        <select
+          value={selectedMunicipality}
+          onChange={(e) => onMunicipalityChange(e.target.value)}
+        >
+          <option value="">-- Select Municipality --</option>
+          {municipalities.map((municipality) => (
+            <option key={municipality.code} value={municipality.code}>
+              {municipality.name}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      <label>
+        Enter Year:
+        <input
+          type="number"
+          value={selectedYear}
+          onChange={(e) => onYearChange(e.target.value)}
+        />
+      </label>
+
+      <button onClick={onSearch}>Find Companies</button>
+    </div>
   );
-}
+};
 
 export default CompanySearchForm;
