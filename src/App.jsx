@@ -27,6 +27,7 @@ const App = () => {
       alert('Please select a municipality and a year.');
       return;
     }
+   
 
     
     const apiUrl = `https://data.brreg.no/enhetsregisteret/api/enheter?kommunenummer=${selectedMunicipality}&size=10000&fraStiftelsesdato=${selectedYear}-01-01&tilStiftelsesdato=${selectedYear}-12-31`;

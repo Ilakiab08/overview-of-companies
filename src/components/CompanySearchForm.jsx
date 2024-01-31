@@ -2,6 +2,8 @@
 import React from 'react';
 
 const CompanySearchForm = ({ municipalities, selectedMunicipality, selectedYear, onMunicipalityChange, onYearChange, onSearch }) => {
+
+  
   return (
     <div>
       <label>
